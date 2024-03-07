@@ -1,5 +1,7 @@
 # PDF COMBINER
 
+** made some changes to this utility so that it works on Windows and other platforms **
+
 A simple script to merge a bunch of PDF files into one.
 
 Given a directory, this program will find all of the PDF files in that
