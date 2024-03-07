@@ -1,11 +1,12 @@
 import argparse
 import os
 from glob import glob
+from pathlib import Path
 from pdfrw import PdfWriter
 from pdfrw import PdfReader
 from natsort import natsorted
 
-VERSION = '0.1'
+VERSION = '0.2'
 
 parser = argparse.ArgumentParser(description="Combine a folder of many PDF files into one big PDF file.")
 parser.add_argument('path', nargs='?', default=os.getcwd(), help="The path to a directory full of PDF files")
@@ -20,16 +21,16 @@ if args.version:
     print("pdfCombiner " + VERSION)
 
 if args.combined:
-    combinedFile = args.combined
+    combinedFile = Path(args.combined)
 
 if args.path:
-    path = args.path
+    path = Path(args.path)
     if args.verbose:
         print("Searching {} for PDF files.\n".format(path))
 
 # Generate a list of file names (includes the full path)
 fileList = []
-for filePath in glob(path + "/*.pdf"):
+for filePath in path.glob('*.pdf'):
     if args.verbose:
         print("Found {}".format(filePath))
     fileList.append(filePath)
